@@ -2,16 +2,24 @@ import React from "react";
 import Sidebar from "@/components/Sidebar";
 import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/Header";
+import { useEffect } from "react";
 import { getCurrentUser } from "@/lib/actions/user.actions";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { Toaster } from "@/components/ui/toaster";
 
 export const dynamic = "force-dynamic";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const currentUser = await getCurrentUser();
+  const router = useRouter();
 
-  if (!currentUser) return redirect("/sign-in");
+  useEffect(() => {
+      if (!currentUser)  {
+      router.push("/sign-in")
+      }
+    },[currentUser])
+  
+  //if (!currentUser) return redirect("/sign-in");
 
   return (
     <main className="flex h-screen">
