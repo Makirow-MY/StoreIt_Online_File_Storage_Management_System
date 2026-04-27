@@ -1,3 +1,4 @@
+"use server";
 import React from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
@@ -19,8 +20,6 @@ const Header = ({
         <FileUploader ownerId={userId} accountId={accountId} />
         <form
           action={async () => {
-            "use server";
-
             await signOutUser();
           }}
         >
