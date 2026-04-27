@@ -12,11 +12,11 @@ export const dynamic = "force-dynamic";
 
 const Layout = async ({ children }: { children: React.ReactNode }) => {
   const currentUser = await getCurrentUser();
-  const router = useRouter();
+  //const router = useRouter();
 
   useEffect(() => {
       if (!currentUser)  {
-      router.push("/sign-in")
+      redirect("/sign-in")
       }
     },[currentUser])
   
