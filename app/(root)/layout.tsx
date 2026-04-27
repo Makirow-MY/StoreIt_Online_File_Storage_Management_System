@@ -5,7 +5,7 @@ import MobileNavigation from "@/components/MobileNavigation";
 import Header from "@/components/Header";
 import { useEffect } from "react";
 import { getCurrentUser } from "@/lib/actions/user.actions";
-import { redirect, useRouter } from "next/navigation";
+import { redirect} from "next/navigation";
 import { Toaster } from "@/components/ui/toaster";
 
 export const dynamic = "force-dynamic";
