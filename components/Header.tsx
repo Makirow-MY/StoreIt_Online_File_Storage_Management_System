@@ -5,7 +5,10 @@ import Image from "next/image";
 import Search from "@/components/Search";
 import FileUploader from "@/components/FileUploader";
 import { signOutUser } from "@/lib/actions/user.actions";
-
+async function handleSignOut() {
+  "use server";                    // Ensure it's explicitly a Server Action
+  await signOutUser();
+}
 const Header = ({
   userId,
   accountId,
@@ -19,9 +22,7 @@ const Header = ({
       <div className="header-wrapper">
         <FileUploader ownerId={userId} accountId={accountId} />
         <form
-          action={async () => {
-            await signOutUser();
-          }}
+          action={handleSignOut}
         >
           <Button type="submit" className="sign-out-button">
             <Image
